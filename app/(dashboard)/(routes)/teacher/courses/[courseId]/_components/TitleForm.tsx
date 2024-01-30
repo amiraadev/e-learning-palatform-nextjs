@@ -53,6 +53,7 @@ const TitleForm: React.FC<TitleFormProps> = ({ initialData, courseId }) => {
 			toast.error("Something went wrong!");
 		}
 	};
+console.log(isEditing);
 
 	return (
 		<div className='mt-6 border bg-slate-100 rounded-md p-4'>
@@ -60,17 +61,18 @@ const TitleForm: React.FC<TitleFormProps> = ({ initialData, courseId }) => {
 				Course title
 				<Button onClick={toggleEdit} variant='ghost'>
 					{isEditing ? (
+                        <>Cancel</>
+					
+					) : (
 						<>
 							<Pencil className='h-4 w-4 mr-2' />
 							Edit title
 						</>
-					) : (
-						<>Cancel</>
 					)}
 				</Button>
 			</div>
 			{!isEditing && <p className='text-sm mt-2'>{initialData.title}</p>}
-			{!isEditing && (
+			{isEditing && (
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
@@ -93,7 +95,7 @@ const TitleForm: React.FC<TitleFormProps> = ({ initialData, courseId }) => {
 						/>
 						<div className='flex items-center gap-x-2'>
 							<Button disabled={!isValid || isSubmitting} type='submit'>
-								Cancel
+								Save
 							</Button>
 						</div>
 					</form>
