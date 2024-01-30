@@ -1,14 +1,17 @@
-import React from 'react'
-import Sidebar from './_components/Sidebar'
+/** @format */
 
-const DashboardLayout = ({children}:{children:React.ReactNode}) => {
-  return (
-    <div className='h-full'>
-         <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50"> 
-         <Sidebar/>
-         </div>
-        {children}</div>
-  )
-}
+import React from "react";
+import Sidebar from "./_components/Sidebar";
 
-export default DashboardLayout
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+	return (
+		<div className='h-full'>
+			<div className='hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50'>
+				<Sidebar />
+			</div>
+			<main className='md:pl-56 h-full'>{children}</main>
+		</div>
+	);
+};
+
+export default DashboardLayout;
