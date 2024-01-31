@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Course } from "@prisma/client";
+import { formatPrice } from "@/lib/format";
 
 interface PriceFormProps {
 	initialData: Course;
@@ -68,7 +69,7 @@ const PriceForm: React.FC<PriceFormProps> = ({ initialData, courseId }) => {
 					)}
 				</Button>
 			</div>
-			{!isEditing && <p className={cn("text-sm mt-2",!initialData.price && "text-slate-500 italic")}>{initialData.price || "No Price"}</p>}
+			{!isEditing && <p className={cn("text-sm mt-2",!initialData.price && "text-slate-500 italic")}>{initialData.price ? formatPrice(initialData.price)  : "No Price"}</p>}
 			{isEditing && (
 				<Form {...form}>
 					<form
