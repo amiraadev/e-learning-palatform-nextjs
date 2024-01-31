@@ -2,25 +2,15 @@
 
 "use client";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import * as z from "zod";
 import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
 
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
-} from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { Course } from "@prisma/client";
 import Image from "next/image";
 import FileUpload from "@/components/FileUpload";
@@ -40,14 +30,7 @@ const ImageForm: React.FC<ImageFormProps> = ({ initialData, courseId }) => {
 	const router = useRouter();
 	const toggleEdit = () => setIsEditing((current) => !current);
 
-	const form = useForm<z.infer<typeof formSchema>>({
-		resolver: zodResolver(formSchema),
-		defaultValues: {
-			imageUrl: initialData?.imageUrl || "",
-		},
-	});
 
-	const { isSubmitting, isValid } = form.formState;
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
 			await axios.patch(`/api/courses/${courseId}`, values);
