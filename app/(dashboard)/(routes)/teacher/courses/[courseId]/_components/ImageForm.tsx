@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
 
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Course } from "@prisma/client";
 import Image from "next/image";
