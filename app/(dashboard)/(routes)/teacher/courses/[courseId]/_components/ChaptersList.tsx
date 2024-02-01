@@ -11,7 +11,7 @@ import {
 	DropResult,
 } from "@hello-pangea/dnd";
 import { cn } from "@/lib/utils";
-import { Grid, Grip } from "lucide-react";
+import { Badge, Grid, Grip, Pencil } from "lucide-react";
 
 interface ChaptersListProps {
 	items: Chapter[];
@@ -30,11 +30,33 @@ const ChaptersList = ({ items, onReorder, onEdit }: ChaptersListProps) => {
 		setChapters(items);
 	}, [items]);
 
+	const onDragEnd = (result: DropResult) => {
+		if (!result.destination) return;
+
+		const items = Array.from(chapters);
+		const [reorderItem] = items.splice(result.source.index, 1);
+		items.splice(result.destination.index, 0, reorderItem);
+
+		const startIndex = Math.min(result.source.index, result.destination.index);
+		const endIndex = Math.min(result.source.index, result.destination.index);
+
+		const updatedChapters = items.slice(startIndex, endIndex + 1);
+
+		setChapters(items);
+
+		const bulkUpdatedData = updatedChapters.map((chapter) => ({
+			id: chapter.id,
+			position: items.findIndex((item) => item.id === chapter.id),
+		}));
+
+		onReorder(bulkUpdatedData);
+	};
+
 	if (!isMounted) {
 		return null;
 	}
 	return (
-		<DragDropContext onDragEnd={() => {}}>
+		<DragDropContext onDragEnd={onDragEnd}>
 			<Droppable droppableId='chapters'>
 				{(provided) => (
 					<div {...provided.droppableProps} ref={provided.innerRef}>
@@ -59,12 +81,28 @@ const ChaptersList = ({ items, onReorder, onEdit }: ChaptersListProps) => {
 													"border-r-sky-200 hover:bg-sky-200"
 											)}
 											{...provided.dragHandleProps}>
-                                                <Grip />
-                                            </div>
+											<Grip className='h-5 w-5' />
+										</div>
+										{chapter.title}
+										<div className='ml-auto pr-2 flex items-center gap-x-2'>
+											{chapter.isFree && <Badge>Free</Badge>}
+											<Badge
+												className={cn(
+													"bg-slate-500",
+													chapter.isPublished && "bg-sky-700"
+												)}>
+												{chapter.isPublished ? "Published" : "Draft"}
+											</Badge>
+											<Pencil
+												onClick={() => onEdit(chapter.id)}
+												className='w-4 h-4 cursor-pointer hover:opacity-75 transition'
+											/>
+										</div>
 									</div>
 								)}
 							</Draggable>
 						))}
+						{provided.placeholder}
 					</div>
 				)}
 			</Droppable>
