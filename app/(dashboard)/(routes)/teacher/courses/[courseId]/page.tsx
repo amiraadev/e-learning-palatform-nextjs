@@ -17,7 +17,7 @@ import ImageForm from "./_components/ImageForm";
 import { Combobox } from "@/components/ui/combobox";
 import CategoryForm from "./_components/CategoryForm";
 import PriceForm from "./_components/PriceForm";
-import AttachmentForm from "./_components/attachmentForm";
+import AttachmentForm from "./_components/AttachmentForm";
 
 const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 	const { userId } = auth();
