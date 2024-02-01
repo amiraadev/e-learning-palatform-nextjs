@@ -11,7 +11,8 @@ import {
 	DropResult,
 } from "@hello-pangea/dnd";
 import { cn } from "@/lib/utils";
-import { Badge, Grid, Grip, Pencil } from "lucide-react";
+import {  Grid, Grip, Pencil } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface ChaptersListProps {
 	items: Chapter[];
