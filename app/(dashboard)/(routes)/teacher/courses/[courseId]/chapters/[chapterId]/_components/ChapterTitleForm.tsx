@@ -44,8 +44,8 @@ const ChapterTitleForm: React.FC<ChapterTitleFormProps> = ({ initialData, course
 	const { isSubmitting, isValid } = form.formState;
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
-			await axios.patch(`/api/courses/${courseId}`, values);
-			toast.success("Course updated");
+			await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
+			toast.success("Chapter updated");
 			toggleEdit();
 			router.refresh();
 		} catch (error) {
