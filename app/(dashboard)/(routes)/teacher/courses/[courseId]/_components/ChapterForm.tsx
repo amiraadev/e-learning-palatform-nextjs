@@ -55,6 +55,20 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ initialData, courseId }) => {
 			toast.error("Something went wrong!");
 		}
 	};
+	const onReorder = async (updatedData: { id: string; position: number }[]) => {
+		try {
+			setIsUpdating(true);
+			await axios.put(`/api/courses/${courseId}/chapters/reorder`,{
+				list:updatedData
+			});
+			toast.success("Chapters reordered successfully!");
+			router.refresh()
+		} catch (error) {
+			toast.error("Something went wrong!");
+		} finally {
+			setIsUpdating(false);
+		}
+	};
 
 	return (
 		<div className='mt-6 border bg-slate-100 rounded-md p-4'>
@@ -106,11 +120,11 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ initialData, courseId }) => {
 						!initialData.chapters.length && "text-slate-500 italic"
 					)}>
 					{!initialData.chapters.length && "No chapters"}
-					<ChaptersList 
-					 onEdit={()=>{}}
-					 onReorder={()=>{}}
-					 items={initialData.chapters || []}
- 					/>
+					<ChaptersList
+						onEdit={() => {}}
+						onReorder={onReorder}
+						items={initialData.chapters || []}
+					/>
 				</div>
 			)}
 			{!isCreating && (
