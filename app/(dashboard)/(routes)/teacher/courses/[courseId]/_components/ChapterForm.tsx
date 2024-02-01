@@ -69,6 +69,9 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ initialData, courseId }) => {
 			setIsUpdating(false);
 		}
 	};
+	const onEdit = (id:string)=>{
+		router.push(`/teacher/courses/${courseId}/chapters/${id}`)
+	}
 
 	return (
 		<div className='relative mt-6 border bg-slate-100 rounded-md p-4'>
@@ -126,7 +129,7 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ initialData, courseId }) => {
 					)}>
 					{!initialData.chapters.length && "No chapters"}
 					<ChaptersList
-						onEdit={() => {}}
+						onEdit={onEdit}
 						onReorder={onReorder}
 						items={initialData.chapters || []}
 					/>
