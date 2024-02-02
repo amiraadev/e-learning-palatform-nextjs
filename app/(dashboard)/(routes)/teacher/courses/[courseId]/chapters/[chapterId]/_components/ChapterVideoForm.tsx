@@ -10,8 +10,9 @@ import { Pencil, PlusCircle, Video } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Chapter, MuxData } from "@prisma/client";
-import Image from "next/image";
 import FileUpload from "@/components/FileUpload";
+
+import MuxPlayer from "@mux/mux-player-react";
 
 interface ChapterVideoFormProps {
 	initialData: Chapter & { muxData?: MuxData | null };
@@ -71,7 +72,11 @@ const ChapterVideoForm: React.FC<ChapterVideoFormProps> = ({
 						<Video className='h-10 w-10 text-slate-500' />
 					</div>
 				) : (
-					<div className='relative aspect-video mt-2'>video uploaded !</div>
+					<div className='relative aspect-video mt-2 '>
+						<MuxPlayer 
+						   playbackId={initialData?.muxData?.playbackId || ""}
+						/>
+					</div>
 				))}
 
 			{isEditing && (
