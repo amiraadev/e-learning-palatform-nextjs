@@ -13,6 +13,7 @@ import { Pencil } from "lucide-react";
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormMessage,
@@ -24,17 +25,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Chapter, Course } from "@prisma/client";
 import { Editor } from "@/components/Editor";
 import { Preview } from "@/components/Preview";
+import { Checkbox } from "@/components/ui/checkbox";
 
-interface ChapterDescriptionFormProps {
+interface ChapterAccessFormProps {
 	initialData: Chapter;
 	courseId: string;
 	chapterId: string;
 }
 
 const formSchema = z.object({
-	description: z.string().min(1),
+	isFree: z.boolean().default(false),
 });
-const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
+
+const ChapterAccessForm: React.FC<ChapterAccessFormProps> = ({
 	initialData,
 	courseId,
 	chapterId,
@@ -45,7 +48,8 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
-		defaultValues: { description: initialData?.description || " " },
+		// defaultValues: { isFree: Boolean(initialData?.isFree)  },
+		defaultValues: { isFree: !!initialData?.isFree  },
 	});
 
 	const { isSubmitting, isValid } = form.formState;
@@ -66,14 +70,14 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
 	return (
 		<div className='mt-6 border bg-slate-100 rounded-md p-4'>
 			<div className='font-medium flex items-center justify-between'>
-				Chapter Description
+				Chapter Access 
 				<Button onClick={toggleEdit} variant='ghost'>
 					{isEditing ? (
 						<>Cancel</>
 					) : (
 						<>
 							<Pencil className='h-4 w-4 mr-2' />
-							Edit description
+							Edit access
 						</>
 					)}
 				</Button>
@@ -82,14 +86,12 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
 				<div
 					className={cn(
 						"text-sm mt-2",
-						!initialData.description && "text-slate-500 italic"
+						!initialData.isFree && "text-slate-500 italic"
 					)}>
-					{!initialData.description && "No description"}
-					{initialData.description &&(
-						<Preview
-						  value={initialData.description}
-						/>
-					)}
+				{initialData.isFree ? (<>
+				  this chapter is free for preview
+				</>):(<>
+				this chapter is not free</>)}
 				</div>
 			)}
 			{isEditing && (
@@ -99,14 +101,21 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
 						className='space-y-4 mt-4'>
 						<FormField
 							control={form.control}
-							name='description'
+							name='isFree'
 							render={({ field }) => (
-								<FormItem>
-									<FormControl>
-										<Editor {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
+							<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+								<FormControl>
+									<Checkbox
+									  checked={field.value}
+									  onCheckedChange={field.onChange}
+									/>
+								</FormControl>
+								<div className="space-y-1 leading-none">
+									<FormDescription>
+										Check this box if you want to make this chapter free for preview
+									</FormDescription>
+								</div>
+							</FormItem>
 							)}
 						/>
 						<div className='flex items-center gap-x-2'>
@@ -121,4 +130,4 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
 	);
 };
 
-export default ChapterDescriptionForm;
+export default ChapterAccessForm;
