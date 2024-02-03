@@ -47,18 +47,16 @@ export async function PATCH(
                 isPublished:true
             }
         })
-        if(!publishedChaptersInCourse){
-            await db.chapter.update({
-                where:{
-                    id:params.chapterId,
-                    courseId:params.courseId
-
-                },
-                data:{
-                    isPublished:false,
-                }
-            })
-        }
+        if (!publishedChaptersInCourse.length) {
+            await db.course.update({
+              where: {
+                id: params.courseId,
+              },
+              data: {
+                isPublished: false,
+              }
+            });
+          }
 
         return NextResponse.json(unpublishedChapter)
 	} catch (error) {

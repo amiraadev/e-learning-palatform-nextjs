@@ -12,6 +12,7 @@ export async function PATCH(
 	try {
 		const { userId } = auth();
 		if (!userId) {
+            
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
 		const course = await db.course.findUnique({

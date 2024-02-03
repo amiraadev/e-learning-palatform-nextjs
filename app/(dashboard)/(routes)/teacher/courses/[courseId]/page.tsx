@@ -71,7 +71,7 @@ const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 
 	const isComplete = requiredFields.every(Boolean)
 
-
+  
 	return (
 		<>
 		{!course.isPublished && (

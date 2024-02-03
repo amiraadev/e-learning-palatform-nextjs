@@ -22,6 +22,7 @@ const Actions = ({
 	courseId,
 	isPublished,
 }: ActionsProps) => {
+	
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +32,7 @@ const Actions = ({
 			setIsLoading(true);
 			if (isPublished) {
 				await axios.patch(
-					`/api/courses/${courseId}/chapters/unpublish`
+					`/api/courses/${courseId}/unpublish`
 				);
 				toast.success("Course unpublished");
 			} else {
