@@ -67,9 +67,13 @@ const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 
 	const completionText = `(${completedFields}/${totalFields})`;
 
+	const isComplete = requiredFields.every(Boolean)
+
 	// console.log(course);
 
 	return (
+		<>
+		
 		<div className='p-6'>
 			<div className='flex items-center justify-between'>
 				<div className='flex flex-col gap-y-2'>
@@ -122,6 +126,7 @@ const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 

@@ -24,15 +24,37 @@ const ChapterActions = ({
 	chapterId,
 	isPublished,
 }: ChapterActions) => {
-    const router = useRouter();
+	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
+
+	const onClick = async () => {
+		try {
+			setIsLoading(true);
+			if (isPublished) {
+				await axios.patch(
+					`/api/courses/${courseId}/chapters/${chapterId}/unpublish`
+				);
+				toast.success("Chapter unpublished");
+			} else {
+				await axios.patch(
+					`/api/courses/${courseId}/chapters/${chapterId}/publish`
+				);
+				toast.success("Chapter published");
+			}
+			router.refresh();
+		} catch (error) {
+			toast.error("Something went wrong");
+		} finally {
+			setIsLoading(false);
+		}
+	};
 	const onDelete = async () => {
 		try {
 			setIsLoading(true);
-            await axios.delete(`/api/courses/${courseId}/chapter/${chapterId}`)
-            toast.success("Chapter deleted")
-            router.refresh()
-            router.push(`/teacher/courses/${courseId}`)
+			await axios.delete(`/api/courses/${courseId}/chapters/${chapterId}`);
+			toast.success("Chapter deleted");
+			router.refresh();
+			router.push(`/teacher/courses/${courseId}`);
 		} catch (error) {
 			toast.error("Something went wrong");
 		} finally {
@@ -42,11 +64,11 @@ const ChapterActions = ({
 	return (
 		<div className='flex items-center gap-x-2'>
 			<Button
-				onClick={() => {}}
+				onClick={onClick}
 				disabled={disabled || isLoading}
 				variant='outline'
 				size='sm'>
-				{isPublished ? "Unpublished" : "Published"}
+				{isPublished ? "Unpublish" : "Publish"}
 			</Button>
 			<ConfirmModal onConfirm={onDelete}>
 				<Button size='sm' disabled={isLoading}>
