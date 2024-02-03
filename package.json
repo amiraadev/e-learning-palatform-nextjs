@@ -21,6 +21,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-table": "^8.11.8",
     "@uploadthing/react": "^6.2.2",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
