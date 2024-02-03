@@ -18,6 +18,8 @@ import CategoryForm from "./_components/CategoryForm";
 import PriceForm from "./_components/PriceForm";
 import AttachmentForm from "./_components/AttachmentForm";
 import ChapterForm from "./_components/ChapterForm";
+import Banner from "@/components/Banner";
+import Actions from "./_components/Actions";
 
 const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 	const { userId } = auth();
@@ -69,11 +71,14 @@ const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 
 	const isComplete = requiredFields.every(Boolean)
 
-	// console.log(course);
 
 	return (
 		<>
-		
+		{!course.isPublished && (
+			<Banner
+			   label="Tis course is unpublished. it will not be visible to the students."
+			/>
+		)}
 		<div className='p-6'>
 			<div className='flex items-center justify-between'>
 				<div className='flex flex-col gap-y-2'>
@@ -82,6 +87,11 @@ const CourseIdPAge = async ({ params }: { params: { courseId: string } }) => {
 						Complete all of fields {completionText}
 					</span>
 				</div>
+				<Actions 
+				disabled={isComplete}
+				courseId={params.courseId}
+				isPublished={course.isPublished}
+				/>
 			</div>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-16'>
 				<div>
