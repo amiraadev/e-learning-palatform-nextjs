@@ -10,7 +10,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 const SearchInput = () => {
-	const [value, setValue] = useState("second");
+	const [value, setValue] = useState("");
 	const debouncedValue = useDebounce(value);
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
