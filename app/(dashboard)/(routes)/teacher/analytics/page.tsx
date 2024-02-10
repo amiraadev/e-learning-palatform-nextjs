@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 
 import { getAnalytics } from "@/actions/GetAnalytics";
 
-import { DataCard } from "./_components/data-card";
-import { Chart } from "./_components/chart";
+import { DataCard } from "./_components/DataCard";
+import { Chart } from "./_components/Chart";
 
 const AnalyticsPage = async () => {
   const { userId } = auth();
