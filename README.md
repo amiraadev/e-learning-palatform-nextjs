@@ -71,8 +71,8 @@ Check out the live demo here : https://e-learning-palatform-nextjs.vercel.app/
    ```
 2. .env:
    ```bash
-       NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-       CLERK_SECRET_KEY=
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+      CLERK_SECRET_KEY=
 
       NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
       NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
@@ -101,8 +101,10 @@ Check out the live demo here : https://e-learning-palatform-nextjs.vercel.app/
    ```
 
    ```bash
-npm run dev
-stripe listen --forward-to localhost:3000/api/webhook
-```
+    npm run dev
+     ```
+ ```bash
+  stripe listen --forward-to localhost:3000/api/webhook
+   ```
 
 
