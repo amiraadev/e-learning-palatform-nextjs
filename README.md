@@ -53,9 +53,11 @@ Check out the live demo here : https://e-learning-palatform-nextjs-v0-7qg2oebhn-
 
 - Node.js
 - npm or yarn
-- MySQL Database
+- Postgres Database
 - Stripe Account
-- Mux Account
+- Uploadthing Account
+- Mux Account : Due to current limitations(free trial), videos uploaded in this preview version are subject to automatic deletion after 
+                24 hours and cannot exceed 10 seconds in length.
 - Clerk Account
 - Planetscale Account
 
@@ -65,4 +67,42 @@ Check out the live demo here : https://e-learning-palatform-nextjs-v0-7qg2oebhn-
    ```bash
    git clone https://github.com/your-username/e-learning-platform.git
    cd e-learning-platform
+   npm i 
+   ```
+2. .env:
+   ```bash
+       NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+       CLERK_SECRET_KEY=
+
+      NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+      NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+      NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+      NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+
+      POSTGRES_URL=
+      POSTGRES_PRISMA_URL=
+      POSTGRES_URL_NON_POOLING=
+      POSTGRES_USER=
+      POSTGRES_HOST=
+      POSTGRES_PASSWORD=
+      POSTGRES_DATABASE=
+
+      UPLOADTHING_SECRET=
+
+      MUX_TOKEN_ID=
+      MUX_TOKEN_SECRET=
+
+      STRIPE_API_KEY=
+      NEXT_PUBLIC_APP_URL=http://localhost:3000
+      STRIPE_WEBHOOK_SECRET=
+
+      NEXT_PUBLIC_TEACHER_IDS=user_1,user_2,user_3,user_4,user_5
+   ```
+
+   ```bash
+npm run dev
+stripe listen --forward-to localhost:3000/api/webhook
+```
+
 
