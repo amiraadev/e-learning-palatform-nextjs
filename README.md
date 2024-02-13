@@ -1,8 +1,19 @@
 # E-Learning Platform
+![Screenshot](/public/e-learning-screenshot.png)
 
 ## Overview
 
-This project is an E-Learning Platform that enables users to browse, filter, and purchase courses. It offers a range of features for both students and teachers, facilitating the creation, management, and consumption of educational content.
+Welcome to the E-Learning Platform, a robust solution that caters to both students and teachers, fostering a seamless educational experience. Users can effortlessly browse, filter, and purchase courses, while teachers enjoy an enhanced "Teacher Mode" for course creation and management.
+
+### Teacher Mode Trial Account
+
+To learn more and gain firsthand experience, we've created a designated Teacher Mode trial account:
+
+- **Email:** teacher_mode@outlook.com
+- **Password:** teacher2024
+
+## Demo
+Check out the live demo here : https://e-learning-palatform-nextjs-v0-7qg2oebhn-amirticha.vercel.app/
 
 ## Key Features
 
