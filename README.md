@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Learning Platform
+
+## Overview
+
+This project is an E-Learning Platform that enables users to browse, filter, and purchase courses. It offers a range of features for both students and teachers, facilitating the creation, management, and consumption of educational content.
+
+## Key Features
+
+- **Browse & Filter Courses:** Users can easily browse and filter available courses based on their preferences.
+
+- **Purchase Courses using Stripe:** Seamless integration with Stripe for secure course purchases.
+
+- **Mark Chapters as Completed/Uncompleted:** Students can track their progress by marking chapters as completed or uncompleted.
+
+- **Progress Calculation:** The system calculates and displays the progress of each enrolled course.
+
+- **Student Dashboard:** Personalized dashboard for students to manage their courses and track progress.
+
+- **Teacher Mode:** Teachers have access to additional features, enabling them to create and manage courses.
+
+- **Create New Courses:** Teachers can create new courses with rich text descriptions, thumbnails, and attachments.
+
+- **Create New Chapters:** Easy chapter creation with drag-and-drop reordering.
+
+- **Upload Media:** Integration with UploadThing for uploading thumbnails, attachments, and videos.
+
+- **Video Processing with Mux:** Video processing capabilities using Mux for efficient multimedia handling.
+
+- **HLS Video Player using Mux:** Integration of Mux for HLS video playback, ensuring a smooth viewing experience.
+
+- **Rich Text Editor:** Teachers can use a rich text editor for creating detailed chapter descriptions.
+
+- **Authentication using Clerk:** Secure authentication provided by Clerk for user management.
+
+- **ORM using Prisma:** Object-Relational Mapping (ORM) facilitated by Prisma for efficient database interactions.
+
+- **MySQL Database using Planetscale:** Reliable MySQL database powered by Planetscale for robust data storage.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- npm or yarn
+- MySQL Database
+- Stripe Account
+- Mux Account
+- Clerk Account
+- Planetscale Account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/e-learning-platform.git
+   cd e-learning-platform
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
