@@ -13,7 +13,8 @@ const Logo = () => {
     height={130}
     width={130}
     alt="logo"
-    src="/logo.svg"
+    // src="/logo.svg"
+    src="/amira-logo.svg"
     onClick={backToHome}
    />
   )
