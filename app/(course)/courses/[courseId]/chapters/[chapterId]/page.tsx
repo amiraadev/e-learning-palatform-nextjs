@@ -7,7 +7,7 @@ import Banner  from "@/components/Banner";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/Preview";
 
-import { VideoPlayer } from "./_components/videoPlayer";
+import { VideoPlayer } from "./_components/VideoPlayer";
 import { CourseEnrollButton } from "./_components/CourseEnrollButton";
 import { CourseProgressButton } from "./_components/CourseProgressButton";
 

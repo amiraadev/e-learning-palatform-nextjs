@@ -91,10 +91,12 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData, courseId,optio
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										<Combobox
+										{/* <Combobox
 											options={...options}
 											{...field}
-										/>
+										/> */}
+										<Combobox options={options} {...field} />
+
 									</FormControl>
 									<FormMessage />
 								</FormItem>
