@@ -13,7 +13,7 @@ To learn more and gain firsthand experience, we've created a designated Teacher 
 - **Password:** teacher2024
 
 ## Demo
-Check out the live demo here : https://e-learning-palatform-nextjs-v0-7qg2oebhn-amirticha.vercel.app/
+Check out the live demo here : https://e-learning-palatform-nextjs.vercel.app/
 
 ## Key Features
 
